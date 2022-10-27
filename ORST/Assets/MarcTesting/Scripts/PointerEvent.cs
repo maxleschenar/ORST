@@ -29,8 +29,15 @@ public class PointerEvent : MonoBehaviour
                     child = GameObjectHit.transform.gameObject;
                     Debug.Log(GameObjectHit);
                 }
+                else 
+                {
+                game_object[i].GetComponent<Renderer>().material.SetFloat("_enable",0.0f);  
+                Debug.Log("Theres no hit :(");
+                }          
             }
+
         }
+        
         else
         {
             for (int i=0;i<game_object.Length;i++)

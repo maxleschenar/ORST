@@ -11,7 +11,6 @@ Material:
   m_Shader: {fileID: 4800000, guid: ed8b4230b62cb49d8a0fb1c6dbf45681, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords:
-  - _ENABLE_ON
   - _METALLICGLOSSMAP
   - _NORMALMAP
   m_LightmapFlags: 4
@@ -89,8 +88,8 @@ Material:
     - _VertexColorLightmapScale: 1
     - _WetMapUV: 1
     - _ZWrite: 1
-    - _enable: 1
-    - _outline_thickness: 0.02
+    - _enable: 0
+    - _outline_thickness: 0.01
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
