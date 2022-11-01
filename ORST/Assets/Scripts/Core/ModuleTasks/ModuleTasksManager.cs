@@ -21,7 +21,7 @@ namespace ORST.Core.ModuleTasks {
                 return;
             }
 
-            switch (m_CurrentModuleTask.ExecuteModuleTask()) {
+            switch (m_CurrentModuleTask.UpdateModuleTask()) {
                 case ModuleTaskState.Successful:
                     //Task was successful
                     if (m_TaskQueue.Count > 0) {
@@ -68,7 +68,7 @@ namespace ORST.Core.ModuleTasks {
                 List<ModuleTask> randomModuleTasks = new();
                 //Randomize task list before adding to queue
                 foreach (ModuleTask currentTask in m_AllTasks) {
-                    if (!currentTask.IsEligibleForRandom()) {
+                    if (!currentTask.IsEligibleForRandom) {
                         if (lastTaskRandomizable) {
                             randomModuleTasks.Shuffle();
                             adjustedList.AddRange(randomModuleTasks);

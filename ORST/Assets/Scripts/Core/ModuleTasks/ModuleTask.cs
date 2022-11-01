@@ -18,8 +18,23 @@ namespace ORST.Core.ModuleTasks {
 
         private Queue<ModuleTask> m_ModuleSubtaskQueue;
         private ModuleTask m_CurrentModuleSubtask;
+        private bool m_Started;
+        private bool m_Completed;
 
+        /// <summary>
+        /// Gets a value indicating whether this task is eligible for randomization.
+        /// </summary>
         public bool IsEligibleForRandom => m_IsEligibleForRandom;
+
+        /// <summary>
+        /// Gets a value indicating whether this task has started.
+        /// </summary>
+        public bool Started => m_Started;
+
+        /// <summary>
+        /// Gets a value indicating whether this task has completed.
+        /// </summary>
+        public bool Completed => m_Completed;
 
         private void Start() {
             InitializeModuleTask();
@@ -30,7 +45,7 @@ namespace ORST.Core.ModuleTasks {
         }
 
         private void InitializeModuleTask() {
-            //On Subtasks this will be an empty list and will be skipped
+            // On Subtasks this will be an empty list and will be skipped
             if (m_ModuleSubtasks.Count <= 0) {
                 return;
             }
@@ -40,21 +55,38 @@ namespace ORST.Core.ModuleTasks {
             m_CurrentModuleSubtask = m_ModuleSubtaskQueue.Dequeue();
         }
 
-        private void RandomizeEligibleSubtasks() {
-            //TODO: Implement randomization
-            throw new NotImplementedException();
-        }
-
         public void StartModuleTask() {
             if (m_CurrentModuleSubtask != null) {
                 //We have subtasks, start subtask
                 m_CurrentModuleSubtask.StartModuleTask();
-            } else {
                 Debug.Log("Task::Subtask started...");
+            } else {
+                Debug.Log("Task::Task started...");
             }
+
+            OnModuleTaskStarted();
+            m_Completed = false;
+            m_Started = true;
         }
 
-        public virtual ModuleTaskState ExecuteModuleTask() {
+        public ModuleTaskState UpdateModuleTask() {
+            ModuleTaskState state = ExecuteModuleTask();
+            if (state == ModuleTaskState.Successful) {
+                m_Started = false;
+                m_Completed = true;
+                OnModuleTaskCompleted();
+            }
+
+            return state;
+        }
+
+        protected virtual void OnModuleTaskStarted() {
+        }
+
+        protected virtual void OnModuleTaskCompleted() {
+        }
+
+        protected virtual ModuleTaskState ExecuteModuleTask() {
             //Task implementation here, subtask will override it to implement functionality
             return AdvanceModuleSubtasks();
         }
