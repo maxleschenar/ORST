@@ -8,11 +8,11 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Character 1
-  m_Shader: {fileID: 4800000, guid: ed8b4230b62cb49d8a0fb1c6dbf45681, type: 3}
+  m_Shader: {fileID: 4800000, guid: 3e9871036a05d415e876901e7ad2c6d3, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords:
-  - _EMISSION
-  m_LightmapFlags: 1
+  - _SMOOTHNESS_TEXTURE_ALBEDO_CHANNEL_A
+  m_LightmapFlags: 6
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -68,21 +68,21 @@ Material:
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _GlossMapScale: 1
-    - _Glossiness: 0.5
+    - _Glossiness: 0.696
     - _GlossyReflections: 1
     - _Glow: 3
-    - _Metallic: 0
+    - _Metallic: 1
     - _Mode: 0
     - _OcclusionStrength: 1
-    - _Outline: 0.3
+    - _Outline: 0.121
     - _Parallax: 0.02
-    - _SmoothnessTextureChannel: 0
+    - _SmoothnessTextureChannel: 1
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _UVSec: 0
     - _ZWrite: 1
     - _enable: 0
-    - _outline_thickness: 0.001
+    - _outline_thickness: 0.003
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EdgeColor: {r: 0, g: 0.40378952, b: 1, a: 1}
